@@ -77,6 +77,7 @@ cursor.execute("""
 cursor.execute("""
                CREATE TABLE especie(
                numero INTEGER NOT NULL PRIMARY KEY,
+               nome VARCHAR(50) UNIQUE NOT NULL,
                pre_evolucao INTEGER,
                pre_requisito VARCHAR(50),
                tipo1 VARCHAR(12) NOT NULL,
