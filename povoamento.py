@@ -54,7 +54,7 @@ try:
         'Nugget', 'Rare Candy', 'Escape Rope', 'Repel', 'Super Repel',
         'TM01 - Mega Punch', 'TM13 - Ice Beam', 'TM26 - Earthquake', 'TM38 - Fire Blast',
         'HM01 - Cut', 'HM03 - Surf',
-        'Boulder Badge', 'Cascade Badge', 'Thunder Badge'
+        'Boulder Badge', 'Cascade Badge', 'Thunder Badge', 'Rainbow Badge', 'Soul Badge', 'Marsh Badge', 'Volcano Badge', 'Earth Badge'
     ]
     for item in items:
         cursor.execute("INSERT INTO item (nome) VALUES (?);", (item,))
@@ -71,7 +71,9 @@ try:
         ('Sleep Powder', 'Planta'), ('Toxic', 'Veneno'), ('Swords Dance', 'Normal'),
         ('Agility', 'Psíquico'), ('Recover', 'Normal'), ('Surf', 'Água'),
         ('Cut', 'Normal'), ('Strength', 'Normal'), ('Hydro Pump', 'Água'),
-        ('Fire Blast', 'Fogo'), ('Double Kick', 'Lutador'), ('Mega Drain', 'Planta')
+        ('Fire Blast', 'Fogo'), ('Double Kick', 'Lutador'), ('Mega Drain', 'Planta'),
+        ('Rock Throw', 'Rocha'), ('Psybeam', 'Psíquico'), ('Iron Tail', 'Aço'),
+        ('Seismic Toss', 'Lutador'), ('Skull Bash', 'Normal'), ('Mega Punch', 'Normal')
     ]
     for move in moves:
         cursor.execute("INSERT INTO movimento (nome, tipo) VALUES (?, ?);", move)
@@ -355,42 +357,255 @@ try:
     cursor.execute("INSERT INTO pokemon (numero, id_pokemon, rota, regiao) VALUES (66, 2, 'Victory Road', 'Kanto');")    # Machop #2
     cursor.execute("INSERT INTO pokemon (numero, id_pokemon, rota, regiao) VALUES (150, 1, 'Cerulean Cave', 'Kanto');") # Mewtwo #1 (Lendário)
 
-    # --- TEM (Movimentos Inatos) ---
-    print("Atribuindo movimentos inatos...")
-    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Thunderbolt', 1, 25);")   # Pikachu #1 (de Ash) aprende Thunderbolt.
-    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Quick Attack', 1, 25);")  # Pikachu #1 (de Ash) também aprende Quick Attack.
-    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Hydro Pump', 1, 121);")  # Starmie #1 (de Misty) aprende Hydro Pump.
-    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Rock Tomb', 1, 95);")    # Onix #1 (de Brock) aprende Rock Tomb.
-    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psychic', 2, 65);")       # Alakazam #2 (de Sabrina) aprende Psychic.
-    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 18);")  # Pidgeot #1 (de Ash) aprende Wing Attack.
-    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 2, 18);")        # Pidgeot #2 (de Gary) aprende Tackle.
+    # =================================================================
+    # ||                    MOVIMENTOS E RELAÇÕES                    ||
+    # =================================================================
 
-    # --- ENSINA (Movimentos Ensinados) ---
+    # --- TEM (Movimentos Inatos/Aprendidos por Nível) ---
+    print("Atribuindo movimentos inatos e canônicos...")
+    # Ash Ketchum
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Thunderbolt', 1, 25);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Quick Attack', 1, 25);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Flamethrower', 1, 6);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 6);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Hydro Pump', 1, 9);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Vine Whip', 1, 3);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 18);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 131);")
+    # Misty
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 121);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 121);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 54);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psychic', 1, 54);") # Psyduck usa Psychic em momentos de estresse
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 118);")
+    # Brock
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Rock Throw', 1, 95);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 74);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Flamethrower', 1, 37);")
+    # Gary Oak
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Hydro Pump', 2, 9);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Bite', 2, 9);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Fire Blast', 1, 59);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psychic', 1, 65);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psybeam', 1, 65);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Recover', 1, 65);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Teleport', 1, 65);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Hyper Beam', 1, 65);") # Mais de 4 ataques
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 2, 18);")
+    # Red
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Sleep Powder', 2, 3);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Thunderbolt', 2, 25);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Body Slam', 1, 143);")
+    # Blue
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Fire Blast', 2, 6);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Earthquake', 1, 112);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psychic', 1, 103);")
+    # Líderes de Ginásio
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Mega Drain', 1, 45);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Sleep Powder', 1, 114);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Thunderbolt', 1, 26);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Thunder Wave', 1, 26);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psychic', 2, 65);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Earthquake', 2, 112);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Rock Tomb', 1, 34);")
+
+    # --- ENSINA (Movimentos Ensinados por Treinadores) ---
     print("Atribuindo movimentos ensinados...")
-    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Flamethrower', 1, 6, 1);") # Ash (id: 1) ensina Flamethrower para seu Charizard #1.
-    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Surf', 1, 131, 1);")        # Ash (id: 1) ensina Surf para seu Lapras #1.
-    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Ice Beam', 2, 9, 4);")         # Gary (id: 4) ensina Ice Beam para seu Blastoise #2.
-    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Earthquake', 1, 112, 6);")     # Blue (id: 6) ensina Earthquake para seu Rhydon #1.
-    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Mega Drain', 1, 45, 7);")     # Erika (id: 7) ensina Mega Drain para sua Vileplume #1.
+    # Ash ensina
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Iron Tail', 1, 25, 1);")
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Seismic Toss', 1, 6, 1);")
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Skull Bash', 1, 9, 1);")
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Solar Beam', 1, 3, 1);")
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Surf', 1, 131, 1);")
+    # Misty ensina para o Lapras de Ash
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Ice Beam', 1, 131, 2);")
+    # Brock ensina para o Snorlax de Red
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Earthquake', 1, 143, 3);")
+    # Gary ensina
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Ice Beam', 2, 9, 4);")
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Quick Attack', 2, 18, 4);")
+    # Red ensina
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Mega Drain', 2, 3, 5);")
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Surf', 2, 25, 5);") # Pikachu surfista!
+    # Blue ensina
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Swords Dance', 2, 6, 6);")
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Rock Tomb', 1, 112, 6);")
+
+    # --- Povoamento de Movimentos para Treinadores Genéricos (ID 11-30) ---
+    print("Atribuindo movimentos para os Pokémon dos 20 treinadores genéricos...")
+
+    # --- Tabela TEM (Movimentos Inatos/Básicos para TODOS) ---
+    # Cada Pokémon receberá pelo menos um movimento básico.
+
+    # Treinador 11 (Sandshrew, Ekans, Mankey)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 27);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Bite', 1, 23);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Double Kick', 1, 56);")
+    # Treinador 12 (Growlithe, Machop, Bellsprout)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Bite', 1, 58);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Double Kick', 1, 66);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Vine Whip', 1, 69);")
+    # Treinador 13 (Tentacool, Ponyta, Slowpoke)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Toxic', 1, 72);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 77);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 79);")
+    # Treinador 14 (Doduo, Seel, Grimer)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Quick Attack', 1, 84);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 86);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Toxic', 1, 88);")
+    # Treinador 15 (Shellder, Drowzee, Krabby)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 90);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psychic', 1, 96);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 98);")
+    # Treinador 16 (Voltorb, Cubone, Koffing)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 100);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 104);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Toxic', 1, 109);")
+    # Treinador 17 (Rhyhorn, Horsea, Goldeen)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Rock Tomb', 1, 111);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 116);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Aqua Tail', 2, 118);")
+    # Treinador 18 (Spearow, Oddish, Paras)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 21);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Vine Whip', 1, 43);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Sleep Powder', 1, 46);")
+    # Treinador 19 (Raticate, Fearow, Zubat)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Quick Attack', 1, 20);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 22);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Bite', 1, 41);")
+    # Treinador 20 (Venonat, Diglett, Meowth)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Psychic', 1, 48);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 50);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Bite', 1, 52);")
+    # Treinador 21 (Poliwag, Abra, Magikarp)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 60);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Teleport', 1, 63);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 129);")
+    # Treinador 22 (Jigglypuff, Eevee, Porygon)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Body Slam', 1, 39);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Quick Attack', 1, 133);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 137);")
+    # Treinador 23 (Pinsir, Scyther, Tauros)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 127);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 123);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Body Slam', 1, 128);")
+    # Treinador 24 (Lickitung, Chansey, Kangaskhan)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Body Slam', 1, 108);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Double Kick', 1, 113);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Mega Punch', 1, 115);")
+    # Treinador 25 (Hitmonlee, Hitmonchan, Primeape)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Double Kick', 1, 106);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Mega Punch', 1, 107);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Double Kick', 1, 57);")
+    # Treinador 26 (Omanyte, Kabuto, Aerodactyl)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 138);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Tackle', 1, 140);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 142);")
+    # Treinador 27 (Jynx, Electabuzz, Magmar)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Ice Beam', 1, 124);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Thunderbolt', 1, 125);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Flamethrower', 1, 126);")
+    # Treinador 28 (Nidoqueen, Nidoking, Rhydon)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Body Slam', 1, 31);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Double Kick', 2, 34);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Rock Tomb', 3, 112);")
+    # Treinador 29 (Vaporeon, Jolteon, Flareon)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Water Gun', 1, 134);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Thunderbolt', 1, 135);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Flamethrower', 1, 136);")
+    # Treinador 30 (Dratini, Dragonair, Dragonite)
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Bite', 1, 147);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Agility', 1, 148);")
+    cursor.execute("INSERT INTO tem (nome, indice, numero) VALUES ('Wing Attack', 1, 149);")
+
+    # --- Tabela ENSINA (10 Casos de Treinadores Nomeados Ensinando para Genéricos) ---
+    print("Registrando interações de ensino entre treinadores nomeados e genéricos...")
+
+    # Ash (id: 1) ensina 'Mega Punch' para o Mankey do Treinador_11
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Mega Punch', 1, 56, 1);")
+
+    # Misty (id: 2) ensina 'Hydro Pump' para o Tentacool do Treinador_13
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Hydro Pump', 1, 72, 2);")
+
+   # Brock (id: 3), como especialista em rochas, ensina 'Rock Tomb' para o Aerodactyl do Treinador_26
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Rock Tomb', 1, 142, 3);")
+
+    # Gary (id: 4) ensina 'Hyper Beam' para o Krabby do Treinador_15
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Hyper Beam', 1, 98, 4);")
+
+    # Red (id: 5) ensina 'Strength' para o Rhyhorn do Treinador_17
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Strength', 1, 111, 5);")
+
+    # Blue (id: 6) ensina 'Swords Dance' para o Paras do Treinador_18
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Swords Dance', 1, 46, 6);")
+
+    # Erika (id: 7) ensina 'Mega Drain' para o Oddish do mesmo Treinador_18, que a visitou
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Mega Drain', 1, 43, 7);")
+
+    # Lt. Surge (id: 8) ensina 'Thunder Wave' para o Voltorb do Treinador_16
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Thunder Wave', 1, 100, 8);")
+
+    # Sabrina (id: 9) ensina 'Agility' para o Meowth do Treinador_20
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Agility', 1, 52, 9);")
+
+    # Giovanni (id: 10) ensina 'Earthquake' para o Cubone do mesmo Treinador_16
+    cursor.execute("INSERT INTO ensina (nome, id_pokemon, numero, id_treinador) VALUES ('Earthquake', 1, 104, 10);")
 
     # --- ENFRENTA (Batalhas de Ginásio) ---
-    print("Registrando batalhas de ginásio...")
-    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Pewter', 1, '2025-07-15');")
-    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Cerulean', 1, '2025-07-22');")
-    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Pewter', 4, '2025-07-20');")
-    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Vermilion', 5, '2025-07-25');") # Red vs Lt. Surge
-    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Celadon', 6, '2025-07-28');")  # Blue vs Erika
-    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Saffron', 1, '2025-08-05');")  # Ash vs Sabrina
-    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Viridian', 4, '2025-08-10');") # Gary vs Giovanni
+    print("Registrando batalhas de ginásio expandidas...")
+    # Jornada do Ash
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Pewter', 1, '2025-07-15');")    # Ash vs Brock (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Cerulean', 1, '2025-07-22');")  # Ash vs Misty (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Vermilion', 1, '2025-07-29');") # Ash vs Lt. Surge (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Celadon', 1, '2025-08-05');")   # Ash vs Erika (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Saffron', 1, '2025-08-12');")   # Ash vs Sabrina (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Pewter', 1, '2025-08-15');")    # Revanche Ash vs Brock (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Viridian', 1, '2025-08-20');")  # Ash vs Giovanni (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Saffron', 1, '2025-08-25');")   # Revanche Ash vs Sabrina (Vitória)
+    
+    # Jornada do Gary - com 4 tentativas em Viridian
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Pewter', 4, '2025-07-16');")    # Gary vs Brock (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Cerulean', 4, '2025-07-24');")  # Gary vs Misty (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Viridian', 4, '2025-08-01');")  # Gary vs Giovanni (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Viridian', 4, '2025-08-15');")  # Gary vs Giovanni (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Viridian', 4, '2025-08-28');")  # Gary vs Giovanni (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Viridian', 4, '2025-09-05');")  # Gary vs Giovanni (Vitória!)
+
+    # Jornada do Red
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Vermilion', 5, '2025-07-25');") # Red vs Lt. Surge (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Celadon', 5, '2025-08-10');")   # Red vs Erika (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Celadon', 5, '2025-08-11');")   # Red vs Erika (Vitória)
+
+    # Jornada da Blue - com 3 tentativas em Saffron
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Celadon', 6, '2025-07-28');")   # Blue vs Erika (Vitória)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Saffron', 6, '2025-08-14');")   # Blue vs Sabrina (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Saffron', 6, '2025-08-21');")   # Blue vs Sabrina (Derrota)
+    cursor.execute("INSERT INTO enfrenta (cidade, id, data) VALUES ('Saffron', 6, '2025-08-29');")   # Blue vs Sabrina (Vitória!)
 
     # --- RECEBE (Itens de Batalha) ---
     print("Registrando itens recebidos em batalhas...")
-    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Pewter', 1, '2025-07-15', 'Boulder Badge');")
-    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Pewter', 1, '2025-07-15', 'Potion');")
+    # Recompensas do Ash
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Pewter', 1, '2025-08-15', 'Boulder Badge');") #vende na segunda vez
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Pewter', 1, '2025-08-15', 'TM01 - Mega Punch');") #vence na segunda vez
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Cerulean', 1, '2025-07-22', 'Cascade Badge');")
-    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Pewter', 4, '2025-07-20', 'Boulder Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Vermilion', 1, '2025-07-29', 'Thunder Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Celadon', 1, '2025-08-05', 'Rainbow Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Saffron', 1, '2025-08-25', 'Marsh Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Viridian', 1, '2025-08-20', 'Earth Badge');")
+    
+    # Recompensas do Gary (recebe a insígnia apenas na última data)
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Pewter', 4, '2025-07-16', 'Boulder Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Cerulean', 4, '2025-07-24', 'Cascade Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Viridian', 4, '2025-09-05', 'Earth Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Viridian', 4, '2025-09-05', 'Max Revive');") # Uma recompensa extra pela persistência
+
+    # Recompensas do Red
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Vermilion', 5, '2025-07-25', 'Thunder Badge');")
-    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Celadon', 6, '2025-07-28', 'Super Potion');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Celadon', 5, '2025-08-11', 'Rainbow Badge');")
+
+    # Recompensas da Blue (recebe a insígnia apenas na última data)
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Celadon', 6, '2025-07-28', 'Rainbow Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Saffron', 6, '2025-08-29', 'Marsh Badge');")
 
     # --- Finalizar Transação e Fechar Conexão ---
     conn.commit()
