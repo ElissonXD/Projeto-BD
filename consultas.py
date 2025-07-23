@@ -45,7 +45,11 @@ num | consulta
  6  | Todos os pokemons que são do tipo água e/ou do tipo fogo
  7  | Quantidade de pokemons existentes
  8  | Pokemons selvagens
- 9  | Espécies que podem evoluir\n""")
+ 9  | Espécies que podem evoluir
+ 10 | Nome das pre-evoluções de um pokemon
+ 11 | treinadores com e sem ginásio
+ 12 | todos ataques de um pokemon
+ 13 | Quantos treinadores enfrentaram cada ginásio\n""")
                 
                 num = int(input("Numero da consulta: "))
                 consulta = ""
@@ -109,12 +113,12 @@ num | consulta
                         SELECT p.numero, p.id_pokemon, e.nome, e.tipo1, e.tipo2
                         FROM pokemon p
                         INNER JOIN especie e ON p.numero = e.numero
-                        WHERE e.tipo1 IN ('Água', 'Fogo')
-                        UNION
-                        SELECT p.numero, p.id_pokemon, e.nome, e.tipo1, e.tipo2
-                        FROM pokemon p
-                        INNER JOIN especie e ON p.numero = e.numero
-                        WHERE e.tipo2 IN ('Água', 'Fogo');
+                            WHERE e.tipo1 IN ('Água', 'Fogo')
+                            UNION
+                            SELECT p.numero, p.id_pokemon, e.nome, e.tipo1, e.tipo2
+                            FROM pokemon p
+                            INNER JOIN especie e ON p.numero = e.numero
+                                    WHERE e.tipo2 IN ('Água', 'Fogo');
                         """
                         
                     case 7:  # função escalar
@@ -139,16 +143,62 @@ num | consulta
 
                     case 9:  # Subconsulta tabela (IN)
                         consulta = """
-                    SELECT e1.numero, e1.nome as especie_base, e2.nome as evolucao
-                    FROM especie e1
-                    INNER JOIN especie e2 ON e1.numero = e2.pre_evolucao
-                    WHERE e1.numero IN (
-                        SELECT DISTINCT pre_evolucao
-                        FROM especie
-                        WHERE pre_evolucao IS NOT NULL
-                    );
-                    """
+                        SELECT e1.numero, e1.nome as especie_base, e2.nome as evolucao
+                        FROM especie e1
+                        INNER JOIN especie e2 ON e1.numero = e2.pre_evolucao
+                        WHERE e1.numero IN (
+                            SELECT DISTINCT pre_evolucao
+                            FROM especie
+                            WHERE pre_evolucao IS NOT NULL
+                        );
+                        """
+
+                    case 10: #pre-evoluções de um pokemon
+                        cod_pokemon = int(input("digite o indice da espécie: "))
+                        consulta = f"""
+                        SELECT e1.nome, e1.numero
+                        FROM especie e1
+                        WHERE e1.numero = (SELECT e2.pre_evolucao FROM especie e2 WHERE e2.numero = {cod_pokemon}) or 
+                        e1.numero = (SELECT e2.pre_evolucao FROM especie e2 WHERE e2.numero = (
+                        SELECT e3.pre_evolucao FROM especie e3 WHERE e3.numero = {cod_pokemon}))"""
                         
+                    case 11: #treinadores com e sem ginasio
+                        consulta = """
+                        SELECT T.NOME, G.NOME
+                        FROM (
+                            TREINADOR T LEFT OUTER JOIN GINASIO G
+                            ON T.ID = G.ID
+                            )
+                        """    
+
+                    case 12: #todos ataques de um pokemon
+                        numero_pokemon = int(input("digite o número da especie do pokemon: "))
+                        indice_pokemon = int(input("digite o indice do pokemon: "))
+                        consulta = f"""
+                        SELECT nome
+                        FROM tem t
+                        WHERE (t.indice ={indice_pokemon} and t.numero = {numero_pokemon})
+                        UNION
+                        SELECT nome
+                        FROM ensina e
+                        WHERE (e.id_pokemon = {indice_pokemon} and e.numero = {numero_pokemon})
+                        """
+                                       
+                    case 13: 
+                        consulta = """
+                        SELECT g.nome as nome_ginasio, g.cidade, count(e.cidade) as quantidade_treinadores 
+                        FROM ginasio g
+                        LEFT JOIN enfrenta e on g.cidade = e.cidade
+                        GROUP BY g.cidade
+                        ORDER BY quantidade_treinadores DESC;
+                        """
+
+                        #TODO
+                        """
+                        botar pra mostrar todas as evoluções de um pokemon
+                        (ideia) colocar uma consulta que mostre a quantidade e o nome dos movimentos 
+                        ensinados para cada pokemon
+                        """
                     case _:
                         print("Não é uma consulta válida")
                         continue
