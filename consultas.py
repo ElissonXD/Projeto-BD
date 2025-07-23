@@ -46,7 +46,7 @@ num | consulta
  7  | Quantidade de pokemons existentes
  8  | Pokemons selvagens
  9  | Espécies que podem evoluir
- 10 | Nome das pre-evoluções de um pokemon
+ 10 | Nome das pre-evoluções de uma espécie
  11 | treinadores com e sem ginásio
  12 | todos ataques de um pokemon
  13 | Quantos treinadores enfrentaram cada ginásio\n""")
@@ -153,8 +153,15 @@ num | consulta
                         );
                         """
 
-                    case 10: #pre-evoluções de um pokemon
-                        cod_pokemon = int(input("digite o indice da espécie: "))
+                    case 10: #pre-evoluções de uma espécie
+                        opcao = input("Você quer buscar por nome ou número da espécie? (nome/numero): ").strip().lower()
+                        cod_pokemon = None
+                        if opcao == "numero":
+                            cod_pokemon = int(input("digite o número da espécie: "))
+                        else:
+                            nome_especie = input("digite o nome da espécie: ")
+                            cursor.execute("""SELECT numero FROM especie WHERE nome = ?""", (nome_especie,))
+                            cod_pokemon = cursor.fetchone()
                         consulta = f"""
                         SELECT e1.nome, e1.numero
                         FROM especie e1
