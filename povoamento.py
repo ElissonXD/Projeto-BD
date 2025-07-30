@@ -95,30 +95,30 @@ try:
         (19, 'Rattata', None, None, 'Normal', None), (20, 'Raticate', 19, 'Level 20', 'Normal', None),
         (21, 'Spearow', None, None, 'Normal', 'Voador'), (22, 'Fearow', 21, 'Level 20', 'Normal', 'Voador'),
         (23, 'Ekans', None, None, 'Veneno', None), (24, 'Arbok', 23, 'Level 22', 'Veneno', None),
-        (25, 'Pikachu', None, None, 'Elétrico', None), (26, 'Raichu', 25, 'Use Thunder Stone', 'Elétrico', None),
+        (25, 'Pikachu', None, None, 'Elétrico', None), (26, 'Raichu', 25, 'Thunder Stone', 'Elétrico', None),
         (27, 'Sandshrew', None, None, 'Terra', None), (28, 'Sandslash', 27, 'Level 22', 'Terra', None),
         (29, 'Nidoran♀', None, None, 'Veneno', None), (30, 'Nidorina', 29, 'Level 16', 'Veneno', None),
-        (31, 'Nidoqueen', 30, 'Use Moon Stone', 'Veneno', 'Terra'), (32, 'Nidoran♂', None, None, 'Veneno', None),
-        (33, 'Nidorino', 32, 'Level 16', 'Veneno', None), (34, 'Nidoking', 33, 'Use Moon Stone', 'Veneno', 'Terra'),
-        (35, 'Clefairy', None, None, 'Fada', None), (36, 'Clefable', 35, 'Use Moon Stone', 'Fada', None),
-        (37, 'Vulpix', None, None, 'Fogo', None), (38, 'Ninetales', 37, 'Use Fire Stone', 'Fogo', None),
-        (39, 'Jigglypuff', None, None, 'Normal', 'Fada'), (40, 'Wigglytuff', 39, 'Use Moon Stone', 'Normal', 'Fada'),
+        (31, 'Nidoqueen', 30, 'Moon Stone', 'Veneno', 'Terra'), (32, 'Nidoran♂', None, None, 'Veneno', None),
+        (33, 'Nidorino', 32, 'Level 16', 'Veneno', None), (34, 'Nidoking', 33, 'Moon Stone', 'Veneno', 'Terra'),
+        (35, 'Clefairy', None, None, 'Fada', None), (36, 'Clefable', 35, 'Moon Stone', 'Fada', None),
+        (37, 'Vulpix', None, None, 'Fogo', None), (38, 'Ninetales', 37, 'Fire Stone', 'Fogo', None),
+        (39, 'Jigglypuff', None, None, 'Normal', 'Fada'), (40, 'Wigglytuff', 39, 'Moon Stone', 'Normal', 'Fada'),
         (41, 'Zubat', None, None, 'Veneno', 'Voador'), (42, 'Golbat', 41, 'Level 22', 'Veneno', 'Voador'),
         (43, 'Oddish', None, None, 'Planta', 'Veneno'), (44, 'Gloom', 43, 'Level 21', 'Planta', 'Veneno'),
-        (45, 'Vileplume', 44, 'Use Leaf Stone', 'Planta', 'Veneno'), (46, 'Paras', None, None, 'Inseto', 'Planta'),
+        (45, 'Vileplume', 44, 'Leaf Stone', 'Planta', 'Veneno'), (46, 'Paras', None, None, 'Inseto', 'Planta'),
         (47, 'Parasect', 46, 'Level 24', 'Inseto', 'Planta'), (48, 'Venonat', None, None, 'Inseto', 'Veneno'),
         (49, 'Venomoth', 48, 'Level 31', 'Inseto', 'Veneno'), (50, 'Diglett', None, None, 'Terra', None),
         (51, 'Dugtrio', 50, 'Level 26', 'Terra', None), (52, 'Meowth', None, None, 'Normal', None),
         (53, 'Persian', 52, 'Level 28', 'Normal', None), (54, 'Psyduck', None, None, 'Água', None),
         (55, 'Golduck', 54, 'Level 33', 'Água', None), (56, 'Mankey', None, None, 'Lutador', None),
         (57, 'Primeape', 56, 'Level 28', 'Lutador', None), (58, 'Growlithe', None, None, 'Fogo', None),
-        (59, 'Arcanine', 58, 'Use Fire Stone', 'Fogo', None), (60, 'Poliwag', None, None, 'Água', None),
-        (61, 'Poliwhirl', 60, 'Level 25', 'Água', None), (62, 'Poliwrath', 61, 'Use Water Stone', 'Água', 'Lutador'),
+        (59, 'Arcanine', 58, 'Fire Stone', 'Fogo', None), (60, 'Poliwag', None, None, 'Água', None),
+        (61, 'Poliwhirl', 60, 'Level 25', 'Água', None), (62, 'Poliwrath', 61, 'Water Stone', 'Água', 'Lutador'),
         (63, 'Abra', None, None, 'Psíquico', None), (64, 'Kadabra', 63, 'Level 16', 'Psíquico', None),
         (65, 'Alakazam', 64, 'Trade', 'Psíquico', None), (66, 'Machop', None, None, 'Lutador', None),
         (67, 'Machoke', 66, 'Level 28', 'Lutador', None), (68, 'Machamp', 67, 'Trade', 'Lutador', None),
         (69, 'Bellsprout', None, None, 'Planta', 'Veneno'), (70, 'Weepinbell', 69, 'Level 21', 'Planta', 'Veneno'),
-        (71, 'Victreebel', 70, 'Use Leaf Stone', 'Planta', 'Veneno'), (72, 'Tentacool', None, None, 'Água', 'Veneno'),
+        (71, 'Victreebel', 70, 'Leaf Stone', 'Planta', 'Veneno'), (72, 'Tentacool', None, None, 'Água', 'Veneno'),
         (73, 'Tentacruel', 72, 'Level 30', 'Água', 'Veneno'), (74, 'Geodude', None, None, 'Rocha', 'Terra'),
         (75, 'Graveler', 74, 'Level 25', 'Rocha', 'Terra'), (76, 'Golem', 75, 'Trade', 'Rocha', 'Terra'),
         (77, 'Ponyta', None, None, 'Fogo', None), (78, 'Rapidash', 77, 'Level 40', 'Fogo', None),
@@ -128,13 +128,13 @@ try:
         (85, 'Dodrio', 84, 'Level 31', 'Normal', 'Voador'), (86, 'Seel', None, None, 'Água', None),
         (87, 'Dewgong', 86, 'Level 34', 'Água', 'Gelo'), (88, 'Grimer', None, None, 'Veneno', None),
         (89, 'Muk', 88, 'Level 38', 'Veneno', None), (90, 'Shellder', None, None, 'Água', None),
-        (91, 'Cloyster', 90, 'Use Water Stone', 'Água', 'Gelo'), (92, 'Gastly', None, None, 'Fantasma', 'Veneno'),
+        (91, 'Cloyster', 90, 'Water Stone', 'Água', 'Gelo'), (92, 'Gastly', None, None, 'Fantasma', 'Veneno'),
         (93, 'Haunter', 92, 'Level 25', 'Fantasma', 'Veneno'), (94, 'Gengar', 93, 'Trade', 'Fantasma', 'Veneno'),
         (95, 'Onix', None, None, 'Rocha', 'Terra'), (96, 'Drowzee', None, None, 'Psíquico', None),
         (97, 'Hypno', 96, 'Level 26', 'Psíquico', None), (98, 'Krabby', None, None, 'Água', None),
         (99, 'Kingler', 98, 'Level 28', 'Água', None), (100, 'Voltorb', None, None, 'Elétrico', None),
         (101, 'Electrode', 100, 'Level 30', 'Elétrico', None), (102, 'Exeggcute', None, None, 'Planta', 'Psíquico'),
-        (103, 'Exeggutor', 102, 'Use Leaf Stone', 'Planta', 'Psíquico'), (104, 'Cubone', None, None, 'Terra', None),
+        (103, 'Exeggutor', 102, 'Leaf Stone', 'Planta', 'Psíquico'), (104, 'Cubone', None, None, 'Terra', None),
         (105, 'Marowak', 104, 'Level 28', 'Terra', None), (106, 'Hitmonlee', None, None, 'Lutador', None),
         (107, 'Hitmonchan', None, None, 'Lutador', None), (108, 'Lickitung', None, None, 'Normal', None),
         (109, 'Koffing', None, None, 'Veneno', None), (110, 'Weezing', 109, 'Level 35', 'Veneno', None),
@@ -143,14 +143,14 @@ try:
         (115, 'Kangaskhan', None, None, 'Normal', None), (116, 'Horsea', None, None, 'Água', None),
         (117, 'Seadra', 116, 'Level 32', 'Água', None), (118, 'Goldeen', None, None, 'Água', None),
         (119, 'Seaking', 118, 'Level 33', 'Água', None), (120, 'Staryu', None, None, 'Água', None),
-        (121, 'Starmie', 120, 'Use Water Stone', 'Água', 'Psíquico'), (122, 'Mr. Mime', None, None, 'Psíquico', 'Fada'),
+        (121, 'Starmie', 120, 'Water Stone', 'Água', 'Psíquico'), (122, 'Mr. Mime', None, None, 'Psíquico', 'Fada'),
         (123, 'Scyther', None, None, 'Inseto', 'Voador'), (124, 'Jynx', None, None, 'Gelo', 'Psíquico'),
         (125, 'Electabuzz', None, None, 'Elétrico', None), (126, 'Magmar', None, None, 'Fogo', None),
         (127, 'Pinsir', None, None, 'Inseto', None), (128, 'Tauros', None, None, 'Normal', None),
         (129, 'Magikarp', None, None, 'Água', None), (130, 'Gyarados', 129, 'Level 20', 'Água', 'Voador'),
         (131, 'Lapras', None, None, 'Água', 'Gelo'), (132, 'Ditto', None, None, 'Normal', None),
-        (133, 'Eevee', None, None, 'Normal', None), (134, 'Vaporeon', 133, 'Use Water Stone', 'Água', None),
-        (135, 'Jolteon', 133, 'Use Thunder Stone', 'Elétrico', None), (136, 'Flareon', 133, 'Use Fire Stone', 'Fogo', None),
+        (133, 'Eevee', None, None, 'Normal', None), (134, 'Vaporeon', 133, 'Water Stone', 'Água', None),
+        (135, 'Jolteon', 133, 'Thunder Stone', 'Elétrico', None), (136, 'Flareon', 133, 'Fire Stone', 'Fogo', None),
         (137, 'Porygon', None, None, 'Normal', None), (138, 'Omanyte', None, None, 'Rocha', 'Água'),
         (139, 'Omastar', 138, 'Level 40', 'Rocha', 'Água'), (140, 'Kabuto', None, None, 'Rocha', 'Água'),
         (141, 'Kabutops', 140, 'Level 40', 'Rocha', 'Água'), (142, 'Aerodactyl', None, None, 'Rocha', 'Voador'),
@@ -596,11 +596,13 @@ try:
     # Recompensas do Gary (recebe a insígnia apenas na última data)
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Pewter', 4, '2025-07-16', 'Boulder Badge');")
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Cerulean', 4, '2025-07-24', 'Cascade Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Cerulean', 4, '2025-07-24', 'Water Stone');")
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Viridian', 4, '2025-09-05', 'Earth Badge');")
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Viridian', 4, '2025-09-05', 'Max Revive');") # Uma recompensa extra pela persistência
 
     # Recompensas do Red
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Vermilion', 5, '2025-07-25', 'Thunder Badge');")
+    cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Vermilion', 5, '2025-07-25', 'Thunder Stone');")
     cursor.execute("INSERT INTO recebe (cidade, id, data, nome) VALUES ('Celadon', 5, '2025-08-11', 'Rainbow Badge');")
 
     # Recompensas da Blue (recebe a insígnia apenas na última data)
