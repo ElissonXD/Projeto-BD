@@ -38,7 +38,7 @@ def main():
 num | consulta 
  0  | sair
  1  | Treinador com mais de 3 pókemons
- 2  | Nome de todos os ginásios e nome do líder
+ 2  | Nome de todos os ginásios com líder e nome do líder
  3  | Itens que não são recompensas de ginásio
  4  | Pokémons que evoluem
  5  | Treinadores que não lutaram contra nenhum ginásio
