@@ -18,7 +18,7 @@ def printar_informações():
 
 
 def safe_input(prompt, cast=str):
-    valor = input(prompt)
+    valor = input(prompt).strip()
     if valor == '':
         return None
     return cast(valor)
