@@ -45,7 +45,7 @@ num | consulta
  6  | Treinador do pokémon
  7  | Espécies de todos os pokémons de líderes de ginásio da cidade de Pewter
  8  | Todas as especies com o mesmo tipo da espécie bulbasaur
- 9  | Todos os pré-requisitos de espécies que também são itens recebidos por ginásios\n""")
+ 9  | Todos os itens ganhados em batalhas que também são pré-requisitos de evoluções\n""")
                 
                 num = int(input("Numero da consulta: "))
                 consulta = ""
