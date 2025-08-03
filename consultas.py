@@ -99,13 +99,13 @@ num | consulta
                         );
                         """
                         
-                    case 6:  # Subconsulta Escalar
+                    case 6:  # Subconsulta Escalar ERRADO
                         consulta = """
                         SELECT COUNT(*) as total_pokemons
                                         FROM especie;
                         """
                         
-                    case 7:  # Subconsulta Linha
+                    case 7:  # Subconsulta Linha ERRADO/ ESCALAR
                         while True:
                             try:
                                 numero_pokemon = int(input("Insira o número do pokémon: "))
@@ -123,7 +123,7 @@ num | consulta
                             except:
                                 print("Entradas inválidas!")
                         
-                    case 8:  # Subconsulta Tabela
+                    case 8:  # Subconsulta Tabela ERRADO / ESCALAR
                         consulta = """
                         SELECT *
                         FROM especie E
