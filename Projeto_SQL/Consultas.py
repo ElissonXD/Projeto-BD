@@ -124,7 +124,7 @@ num | consulta
                         WHERE E.numero IN (
                             SELECT P.numero
                             FROM pokemon P
-                            WHERE P.id_treinador IN (
+                            WHERE P.id_treinador = (
                                 SELECT G.id
                                 FROM ginasio G 
                                 WHERE G.cidade = 'Pewter'
