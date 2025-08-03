@@ -80,11 +80,11 @@ num | consulta
                     case 4:  # Semi Junção
                         consulta = """
                         SELECT E.nome 
-                        FROM especie e
+                        FROM especie E
                         WHERE EXISTS (
                             SELECT E2.numero
                             FROM especie E2
-                            WHERE E.numero = E2.numero
+                            WHERE E.numero = E2.pre_evolucao
                         );
                         """
                         
