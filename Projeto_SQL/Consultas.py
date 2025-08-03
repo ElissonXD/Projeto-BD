@@ -58,6 +58,7 @@ num | consulta
                         consulta = """
                         SELECT P.id_treinador, COUNT(*) AS NUM_POKEMON
                         FROM pokemon P
+                        WHERE P.id_treinador is NOT NULL
                         GROUP BY P.id_treinador
                         HAVING COUNT(*) > 3;
                         """
