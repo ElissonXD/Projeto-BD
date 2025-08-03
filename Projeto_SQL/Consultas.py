@@ -98,9 +98,7 @@ num | consulta
                             WHERE E.id = T.id
                         );
                         """
-                        
-
-                        
+                
                     case 6:  # Subconsulta escalar
                         while True:
                             try:
@@ -134,17 +132,13 @@ num | consulta
                         ) 
                         """
 
-                    case 8: # subconsulta Linha
+                    case 8: # Subconsulta Linha
                         consulta = """
                         SELECT nome, tipo1, tipo2
                         FROM especie e
-                        WHERE ((e.tipo1, e.tipo2) = (SELECT e1.tipo1, e1.tipo2
+                        WHERE (e.tipo1, e.tipo2) = (SELECT e1.tipo1, e1.tipo2
                                                 FROM especie e1
                                                 WHERE e1.numero = 1) 
-                            or (e.tipo2, e.tipo1) = (SELECT e1.tipo1, e1.tipo2
-                                                FROM especie e1
-                                                WHERE e1.numero = 1) )
-                                and e.numero <> 1
                         """
 
 
