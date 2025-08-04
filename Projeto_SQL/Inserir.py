@@ -44,7 +44,7 @@ while True:
             id_pokemon = safe_input("ID do Pokémon do treinador: ", int)
 
             cursor.execute("""
-                SELECT * FROM pokemon WHERE numero = ? AND id_pokemon = ?
+                SELECT * FROM pokemon WHERE numero = ? AND id_pokemon = ? AND id_treinador IS NULL
             """, (numero_pokemon, id_pokemon))
             pokemon_exists = bool(cursor.fetchall())
 
