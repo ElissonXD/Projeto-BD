@@ -33,7 +33,7 @@ lista_especies = [
         "nome": "Ivysaur", 
         "tipos": ["Planta", "Veneno"], 
         "evolucao": [ {
-            "_id": 2, 
+            "_id": 3, 
             "nome": "Venusaur", 
             "tipos": ["Planta", "Veneno"], 
             "evolucao": None, 
@@ -42,7 +42,7 @@ lista_especies = [
         "pre_requisito": "Nível 16"
     },
     {
-        "_id": 2, 
+        "_id": 3, 
         "nome": "Venusaur", 
         "tipos": ["Planta", "Veneno"], 
         "evolucao": None, 
@@ -173,3 +173,18 @@ lista_especies = [
         "pre_requisito": "Pedra de fogo"
     }
 ]
+
+cliente.drop_database('banco_de_dados')
+especies.insert_many(lista_especies)
+
+pokemon = int(input("Escolha o número da pokedex de um pokémon para descobrir suas evoluções: "))
+
+evolucoes = especies.find_one({"_id": pokemon}, projection= {"evolucao": True, "_id": False})
+
+if not evolucoes:
+    print("Esse pokémon não existe")
+elif not evolucoes["evolucao"]:
+    print("Esse pokémon não tem evoluções")
+else:
+    for p in evolucoes["evolucao"]:
+        print(p["nome"])

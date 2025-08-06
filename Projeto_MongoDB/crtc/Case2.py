@@ -171,3 +171,18 @@ lista_especies = [
         "pre_requisito": "Pedra de fogo"
     }
 ]
+
+cliente.drop_database('banco_de_dados')
+especies.insert_many(lista_especies)
+
+pokemon = int(input("Escolha o número da pokedex de um pokémon para descobrir suas evoluções: "))
+
+if not especies.find_one({"_id": pokemon}):
+    print("Esse pokémon não existe")
+elif not especies.find_one({"pre_evolucao._id": pokemon}):
+    print("Esse pokémon não tem evoluções")
+else:
+    evolucoes = especies.find({"pre_evolucao._id": pokemon}, projection= {"nome": True, "_id": False})
+
+    for p in evolucoes:
+        print(p["nome"])
