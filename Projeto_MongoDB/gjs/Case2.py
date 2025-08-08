@@ -258,12 +258,11 @@ def consultar_pokemons():
         id_input = input("Digite o ID do treinador (ou 'sair' para voltar ao menu): ")
         
         if id_input.lower() == 'sair':
-            break # Sai do loop de consulta
+            break
         
         try:
             id_treinador = int(id_input)
             
-            # LÓGICA DE CONSULTA (mantida como no seu original)
             filter_treinador = {"treinador.id_treinador": id_treinador}
             cursor_pokemon = pokemons.find(filter_treinador)
 
@@ -298,7 +297,7 @@ def main():
             consultar_pokemons()
         elif escolha == '3':
             print("Saindo do programa. Até mais!")
-            break # Sai do loop principal
+            break 
         else:
             print("Opção inválida. Por favor, escolha 1, 2 ou 3.")
 
