@@ -368,11 +368,11 @@ def consultar_pokemons():
             id_treinador = int(id_input)
             
             filter_treinador = {"_id": id_treinador}
-            cursor_pokemon = treinadores.find_one(filter_treinador)
+            cursor_treinador = treinadores.find_one(filter_treinador)
 
             if cursor_pokemon:
                 print("-" * 20)
-                for pokemon_ref in cursor_pokemon["pokemon_refs"]:
+                for pokemon_ref in cursor_treinador["pokemon_refs"]:
                     especie = especies.find_one({"_id": pokemon_ref["num_especie"]})
                     if especie:
                         print(f"Pokemon: {especie['nome']}, N°_pokedex: {pokemon_ref['num_especie']}, Id_natureza: {pokemon_ref['id_natureza']}, Tipos: {', '.join(especie['tipos'])}, ")
