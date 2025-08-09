@@ -76,8 +76,7 @@ O projeto contem as seguintes entidades:
 ---
 ### Tecnologias Utilizadas
 - **SQLite**
-- **Python 3**
-- **sqlite3**
+- **Python**
 ---
 ### Integrantes
 - César Cavalcanti
