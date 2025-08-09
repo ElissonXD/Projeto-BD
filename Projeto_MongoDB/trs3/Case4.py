@@ -1,5 +1,4 @@
 # Relacionamento 1:N: cada "pokemon" EMBUTE um array de subdocs "movimentos"
-# Consulta: nomes dos movimentos do Pokémon com nome = <entrada>
 import pymongo
 
 cliente = pymongo.MongoClient("mongodb://localhost:27017/")
