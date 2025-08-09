@@ -29,8 +29,9 @@ pokemon_movimento.insert_many(lista_pokmov)
 
 # Consultar quais movimentos um pokémon tem
 
-num = int(input("Insira o número do pokémon: "))
-id_pokemon = int(input("Insira o numero do id do pokémon: "))
+num = int(input("Insira o id do movimento: "))
 
-for pokmov in pokemon_movimento.find({'pokemon.num_especie': num, 'pokemon.id_natureza': id_pokemon}):
-    print(f'{pokmov['movimento']['nome']}, {pokmov['movimento']['tipo']}')
+movs = pokemon_movimento.find({"movimento._id": num})
+if movs:
+    for pokemons in movs:
+        print(f'{pokemons["pokemon"]["num_especie"]}, {pokemons["pokemon"]["id_natureza"]}, {pokemons["pokemon"]["rota"]}, {pokemons["pokemon"]["regiao"]}, {pokemons["pokemon"]["treinador"]}')
