@@ -1,6 +1,4 @@
-# PokeMove_Case3.py
 # Relacionamento 1:N: cada "pokemon" guarda um ARRAY de _ids de "movimento"
-# Consulta: nomes dos movimentos do Pokémon com nome = <entrada>
 import pymongo
 
 cliente = pymongo.MongoClient("mongodb://localhost:27017/")
