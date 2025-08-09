@@ -43,13 +43,13 @@ lista_especies = [
         "pre_requisito": "Level 32",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 1
             },
             {
-                "_id": 2,
+                "id_pokemon": 2,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 5
@@ -87,13 +87,13 @@ lista_especies = [
         "pre_requisito": "Level 36",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 1
             },
             {
-                "_id": 2,
+                "id_pokemon": 2,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 6
@@ -130,13 +130,13 @@ lista_especies = [
         "pre_requisito": "Level 36",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 1
             },
             {
-                "_id": 2,
+                "id_pokemon": 2,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 4
@@ -154,13 +154,13 @@ lista_especies = [
         "pre_requisito": "Level 36",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 1
             },
             {
-                "_id": 2,
+                "id_pokemon": 2,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 4
@@ -177,13 +177,13 @@ lista_especies = [
         "pre_requisito": None,
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": "Viridian Forest",
                 "regiao": "Kanto",
                 "treinador": 1
             },
             {
-                "_id": 2,
+                "id_pokemon": 2,
                 "rota": "Viridian Forest",
                 "regiao": "Kanto",
                 "treinador": 5
@@ -200,7 +200,7 @@ lista_especies = [
         "pre_requisito": "Thunder Stone",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 8
@@ -218,7 +218,7 @@ lista_especies = [
         "pre_requisito": "Moon Stone",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 10
@@ -235,7 +235,7 @@ lista_especies = [
         "pre_requisito": None,
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": "Rota 7",
                 "regiao": "Kanto",
                 "treinador": 3
@@ -253,7 +253,7 @@ lista_especies = [
         "pre_requisito": "Leaf Stone",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 7
@@ -271,7 +271,7 @@ lista_especies = [
         "pre_requisito": "Level 31",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": "Cerulean Cave",
                 "regiao": "Kanto",
                 "treinador": 9
@@ -288,7 +288,7 @@ lista_especies = [
         "pre_requisito": "Level 28",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 10
@@ -305,7 +305,7 @@ lista_especies = [
         "pre_requisito": None,
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": "Rota 24",
                 "regiao": "Kanto",
                 "treinador": 2
@@ -322,7 +322,7 @@ lista_especies = [
         "pre_requisito": "Fire Stone",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 4
@@ -339,13 +339,13 @@ lista_especies = [
         "pre_requisito": "Trade",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 4
             },
             {
-                "_id": 2,
+                "id_pokemon": 2,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 9
@@ -363,7 +363,7 @@ lista_especies = [
         "pre_requisito": "Leaf Stone",
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": None,
                 "regiao": "Kanto",
                 "treinador": 7
@@ -381,7 +381,7 @@ lista_especies = [
         "pre_requisito": None,
         "pokemons": [
             {
-                "_id": 1,
+                "id_pokemon": 1,
                 "rota": "Mt. Moon",
                 "regiao": "Kanto",
                 "treinador": 3
