@@ -1,6 +1,4 @@
-# PokeMove_Case2.py
 # Relacionamento 1:N: cada documento de "movimento" EMBUTE UM "pokemon"
-# Consulta: nomes dos movimentos do Pokémon com nome = <entrada>
 import pymongo
 
 cliente = pymongo.MongoClient("mongodb://localhost:27017/")
