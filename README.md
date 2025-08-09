@@ -84,4 +84,4 @@ O projeto contem as seguintes entidades:
 - Elisson Oliveira
 - Gabriel Maciel
 - Guilherme José
-- Thawan Ribeiro
+- Thawan Ribeiro da Silva
