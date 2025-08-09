@@ -20,8 +20,13 @@ lista_treinadores =[
     {"_id": 6, "nome": "Blue"},
 ]
 
-
-
+"""
+ Coloquei este comentário apenas para deixar claro que sei que poderia embutir os dados de espécie em Pokémon, e provavelmente seria a melhor opção baseado
+ na atividade que pede o foco em um relacionamento. Porém, optei por manter as coleções separadas porque fiquei pensando no atributo pré-evolução.
+ Como ele se baseia na espécie anterior que evolui, seria estranho ter um Pokémon da espécie 2 que tem como pré-evolução o id 1, mas não ter um Pokémon da espécie 1.
+ Já que no nosso caso não precisamos ter um Pokémon de cada espécie, podemos ainda não ter catalogado nenhum Pokémon de uma espécie.
+ Por conta disso, não embuti os dados e preferi fazer a tabela espécie com as espécies dos Pokémons catalogados, e adicionei as espécies que são pré-evolução delas.
+"""
 lista_pokemons = [
     # Pokémon de Ash
     {"_id": {"num_especie": 25, "id_natureza": 1}, "rota": "Viridian Forest", "regiao": "Kanto", "treinador": 1},
@@ -113,71 +118,3 @@ if bool(cursor_pokemon):
     print("-" * 20)
 else:
     print(f"Nenhum Pokémon encontrado para o treinador com ID {id_treinador}.")
-
-
-""" def povoar_banco():
-    print("\n--- POVOANDO O BANCO DE DADOS ---")
-    try:
-        # Apagando dados antigos
-        cliente.drop_database('banco_de_dados')
-        # Inserindo novos dados
-        treinadores.insert_many(lista_treinadores)
-        pokemons.insert_many(lista_pokemons)
-        especies.insert_many(lista_especies)
-        print("Banco de dados povoado com sucesso!")
-
-    except Exception as e:
-        print(f"Ocorreu um erro ao povoar o banco: {e}")
-    
- """
-""" def consultar_pokemons():
-    while True:
-        print("\n--- CONSULTA DE POKÉMON POR TREINADOR ---")
-        id_input = input("Digite o ID do treinador (ou 'sair' para voltar ao menu): ")
-        
-        if id_input.lower() == 'sair':
-            break # Sai do loop de consulta
-        
-        try:
-            id_treinador = int(id_input)
-            
-            filter_treinador = {"treinador": id_treinador}
-            cursor_pokemon = pokemons.find(filter_treinador)
-
-            if cursor_pokemon:
-                print("-" * 20)
-                for pokemon_ref in cursor_pokemon:
-                    especie = especies.find_one({"_id": pokemon_ref["_id"]["num_especie"]})
-                    if especie:
-                        print(f"Pokemon: {especie['nome']}, N°_pokedex: {pokemon_ref['_id']['num_especie']}, Id_natureza: {pokemon_ref['_id']['id_natureza']}, Tipos: {', '.join(especie['tipos'])}, ")
-                print("-" * 20)
-            else:
-                print(f"Nenhum Pokémon encontrado para o treinador com ID {id_treinador}.")
-                
-        except ValueError:
-            print("Entrada inválida. Por favor, digite um número de ID ou 'sair'.")
-        except Exception as e:
-            print(f"Ocorreu um erro durante a consulta: {e}")
-
-
-def main():
-    while True:
-        print("\n===== MENU PRINCIPAL DO POKÉDEX =====")
-        print("1. Povoar o Banco de Dados")
-        print("2. Consultar Pokémon por ID do Treinador")
-        print("3. Sair")
-        
-        escolha = input("Escolha uma opção: ")
-        
-        if escolha == '1':
-            povoar_banco()
-        elif escolha == '2':
-            consultar_pokemons()
-        elif escolha == '3':
-            print("Saindo do programa. Até mais!")
-            break # Sai do loop principal
-        else:
-            print("Opção inválida. Por favor, escolha 1, 2 ou 3.")
-
-if __name__ == "__main__":
-    main() """
