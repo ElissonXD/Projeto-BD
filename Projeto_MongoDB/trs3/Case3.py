@@ -3,36 +3,24 @@ import pymongo
 cliente = pymongo.MongoClient("mongodb://localhost:27017/")
 banco = cliente["banco_de_dados"]
 pokemons = banco["pokemon"]
-movimentos = banco["movimento"]
 pokemon_moves = banco["pokemon_move"]
 
-lista_movimentos = [
-    {"_id": 101, "nome": "Thunderbolt", "tipo": "Elétrico"},
-    {"_id": 102, "nome": "Quick Attack","tipo": "Normal"},
-    {"_id": 103, "nome": "Iron Tail",   "tipo": "Aço"},
-    {"_id": 201, "nome": "Flamethrower","tipo": "Fogo"},
-    {"_id": 202, "nome": "Wing Attack", "tipo": "Voador"},
-    {"_id": 301, "nome": "Surf",        "tipo": "Água"},
-    {"_id": 302, "nome": "Hydro Pump",  "tipo": "Água"},
-    {"_id": 401, "nome": "Ice Beam",    "tipo": "Gelo"},
-]
-
 lista_pokemon_move = [
-    {"_id": 1001, "pokemon_id": 1, "movimento_id": 101},
-    {"_id": 1002, "pokemon_id": 1, "movimento_id": 102},
-    {"_id": 1003, "pokemon_id": 1, "movimento_id": 103},
-    {"_id": 1101, "pokemon_id": 2, "movimento_id": 201},
-    {"_id": 1102, "pokemon_id": 2, "movimento_id": 202},
-    {"_id": 1201, "pokemon_id": 3, "movimento_id": 301},
-    {"_id": 1202, "pokemon_id": 3, "movimento_id": 302},
-    {"_id": 1301, "pokemon_id": 4, "movimento_id": 102},
-    {"_id": 1401, "pokemon_id": 5, "movimento_id": 301},
-    {"_id": 1402, "pokemon_id": 5, "movimento_id": 401},
-    {"_id": 1501, "pokemon_id": 6, "movimento_id": 301},
-    {"_id": 1502, "pokemon_id": 6, "movimento_id": 302},
-    {"_id": 1601, "pokemon_id": 7, "movimento_id": 302},
-    {"_id": 1602, "pokemon_id": 7, "movimento_id": 401},
-    {"_id": 1701, "pokemon_id": 8, "movimento_id": 202},
+    {"_id": 1001, "movimento": {"nome": "Thunderbolt", "tipo": "Elétrico"}},
+    {"_id": 1002, "movimento": {"nome": "Quick Attack","tipo": "Normal"}},
+    {"_id": 1003, "movimento": {"nome": "Iron Tail",   "tipo": "Aço"}},
+    {"_id": 1101, "movimento": {"nome": "Flamethrower","tipo": "Fogo"}},
+    {"_id": 1102, "movimento": {"nome": "Wing Attack", "tipo": "Voador"}},
+    {"_id": 1201, "movimento": {"nome": "Surf",        "tipo": "Água"}},
+    {"_id": 1202, "movimento": {"nome": "Hydro Pump",  "tipo": "Água"}},
+    {"_id": 1301, "movimento": {"nome": "Quick Attack","tipo": "Normal"}},
+    {"_id": 1401, "movimento": {"nome": "Surf",        "tipo": "Água"}},
+    {"_id": 1402, "movimento": {"nome": "Ice Beam",    "tipo": "Gelo"}},
+    {"_id": 1501, "movimento": {"nome": "Surf",        "tipo": "Água"}},
+    {"_id": 1502, "movimento": {"nome": "Hydro Pump",  "tipo": "Água"}},
+    {"_id": 1601, "movimento": {"nome": "Hydro Pump",  "tipo": "Água"}},
+    {"_id": 1602, "movimento": {"nome": "Ice Beam",    "tipo": "Gelo"}},
+    {"_id": 1701, "movimento": {"nome": "Wing Attack", "tipo": "Voador"}},
 ]
 
 lista_pokemons = [
@@ -47,27 +35,14 @@ lista_pokemons = [
 ]
 
 cliente.drop_database("banco_de_dados")
-movimentos.insert_many(lista_movimentos)
 pokemon_moves.insert_many(lista_pokemon_move)
 pokemons.insert_many(lista_pokemons)
 
 nome_pokemon = input("Digite o nome do Pokémon: ").strip()
 
-poke = pokemons.find_one({"nome": nome_pokemon}, projection={"_id": 1, "movimentos_refs": 1})
-if not poke:
-    print("Pokémon não encontrado.")
-else:
-    if not poke.get("movimentos_refs"):
-        print("Esse Pokémon não possui movimentos cadastrados.")
-    else:
-        pares = list(pokemon_moves.find(
-            {"_id": {"$in": poke["movimentos_refs"]}},
-            projection={"_id": 0, "movimento_id": 1}
-        ))
-        if not pares:
-            print("Pares pokemon_move não encontrados.")
-        else:
-            mov_ids = [p["movimento_id"] for p in pares]
-            cursor = movimentos.find({"_id": {"$in": mov_ids}}, projection={"_id": 0, "nome": 1})
-            nomes = [m["nome"] for m in cursor]
-            print(*nomes, sep="\n") if nomes else print("Movimentos não encontrados.")
+movs = pokemons.find_one({"nome": nome_pokemon})
+if movs:
+    for moves in movs['movimentos_refs']:
+        pokmov = pokemon_moves.find_one({"_id": moves})
+        if pokmov:
+            print(f'{pokmov['movimento']['nome']}, {pokmov['movimento']['tipo']}')
