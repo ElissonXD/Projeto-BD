@@ -36,7 +36,7 @@ lista_especies = [
             "nome": "Ivysaur", 
             "tipos": ["Planta", "Veneno"], 
             "pre_evolucao": {
-                "_id": 1, 
+                "id_pre_evolucao": 1, 
                 "nome": "Bulbasaur", 
                 "tipos": ["Planta", "Veneno"], 
                 "pre_evolucao": None, 
@@ -71,7 +71,7 @@ lista_especies = [
         "nome": "Charizard", 
         "tipos": ["Fogo", "Voador"], 
         "pre_evolucao": {
-            "_id": 5, 
+            "id_pre_evolucao": 5, 
             "nome": "Charmeleon", 
             "tipos": ["Fogo"], 
             "pre_evolucao": {
@@ -110,7 +110,7 @@ lista_especies = [
         "nome": "Blastoise", 
         "tipos": ["Água"], 
         "pre_evolucao": {
-            "_id": 8, 
+            "id_pre_evolucao": 8, 
             "nome": "Wartortle", 
             "tipos": ["Água"], 
             "pre_evolucao": {
