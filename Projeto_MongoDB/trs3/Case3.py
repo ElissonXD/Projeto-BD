@@ -6,7 +6,6 @@ pokemons = banco["pokemon"]
 pokemon_moves = banco["pokemon_move"]
 
 lista_pokemon_move = [
-<<<<<<< HEAD
     {"_id": 1001, "movimento": {"nome": "Thunderbolt", "tipo": "Elétrico"}},
     {"_id": 1002, "movimento": {"nome": "Quick Attack","tipo": "Normal"}},
     {"_id": 1003, "movimento": {"nome": "Iron Tail",   "tipo": "Aço"}},
@@ -22,23 +21,6 @@ lista_pokemon_move = [
     {"_id": 1601, "movimento": {"nome": "Hydro Pump",  "tipo": "Água"}},
     {"_id": 1602, "movimento": {"nome": "Ice Beam",    "tipo": "Gelo"}},
     {"_id": 1701, "movimento": {"nome": "Wing Attack", "tipo": "Voador"}},
-=======
-    {"_id": 1001, "pokemon_id": 1, "movimento": {"nome": "Thunderbolt", "tipo": "Elétrico"}},
-    {"_id": 1002, "pokemon_id": 1, "movimento": {"nome": "Quick Attack", "tipo": "Normal"}},
-    {"_id": 1003, "pokemon_id": 1, "movimento": {"nome": "Iron Tail", "tipo": "Aço"}},
-    {"_id": 1101, "pokemon_id": 2, "movimento": {"nome": "Flamethrower", "tipo": "Fogo"}},
-    {"_id": 1102, "pokemon_id": 2, "movimento": {"nome": "Wing Attack", "tipo": "Voador"}},
-    {"_id": 1201, "pokemon_id": 3, "movimento": {"nome": "Surf", "tipo": "Água"}},
-    {"_id": 1202, "pokemon_id": 3, "movimento": {"nome": "Hydro Pump", "tipo": "Água"}},
-    {"_id": 1301, "pokemon_id": 4, "movimento": {"nome": "Quick Attack", "tipo": "Normal"}},
-    {"_id": 1401, "pokemon_id": 5, "movimento": {"nome": "Surf", "tipo": "Água"}},
-    {"_id": 1402, "pokemon_id": 5, "movimento": {"nome": "Ice Beam", "tipo": "Gelo"}},
-    {"_id": 1501, "pokemon_id": 6, "movimento": {"nome": "Surf", "tipo": "Água"}},
-    {"_id": 1502, "pokemon_id": 6, "movimento": {"nome": "Hydro Pump", "tipo": "Água"}},
-    {"_id": 1601, "pokemon_id": 7, "movimento": {"nome": "Hydro Pump", "tipo": "Água"}},
-    {"_id": 1602, "pokemon_id": 7, "movimento": {"nome": "Ice Beam", "tipo": "Gelo"}},
-    {"_id": 1701, "pokemon_id": 8, "movimento": {"nome": "Wing Attack", "tipo": "Voador"}},
->>>>>>> c7c2a0608d8d9da37a2f62722a0736ddaa7c51fa
 ]
 
 lista_pokemons = [
@@ -58,26 +40,9 @@ pokemons.insert_many(lista_pokemons)
 
 nome_pokemon = input("Digite o nome do Pokémon: ").strip()
 
-<<<<<<< HEAD
 movs = pokemons.find_one({"nome": nome_pokemon})
 if movs:
     for moves in movs['movimentos_refs']:
         pokmov = pokemon_moves.find_one({"_id": moves})
         if pokmov:
             print(f'{pokmov['movimento']['nome']}, {pokmov['movimento']['tipo']}')
-=======
-poke = pokemons.find_one({"nome": nome_pokemon}, projection={"_id": 0, "movimentos_refs": 1})
-if not poke:
-    print("Pokémon não encontrado.")
-else:
-    ids = poke.get("movimentos_refs", [])
-    if not ids:
-        print("Esse Pokémon não possui movimentos cadastrados.")
-    else:
-        cursor = pokemon_moves.find({"_id": {"$in": ids}}, projection={"_id": 0, "movimento.nome": 1})
-        nomes = [pm["movimento"]["nome"] for pm in cursor]
-        if nomes:
-            print(*nomes, sep="\n")
-        else:
-            print("Movimentos não encontrados.")
->>>>>>> c7c2a0608d8d9da37a2f62722a0736ddaa7c51fa
