@@ -12,11 +12,11 @@ lista_especies = [
         "nome": "Bulbasaur", 
         "tipos": ["Planta", "Veneno"], 
         "evolucao": [ {
-            "_id": 2, 
+            "id_evolucao": 2, 
             "nome": "Ivysaur", 
             "tipos": ["Planta", "Veneno"], 
             "evolucao": [ {
-                "id_evolucao": 2, 
+                "id_evolucao": 3, 
                 "nome": "Venusaur", 
                 "tipos": ["Planta", "Veneno"], 
                 "evolucao": None, 
@@ -51,7 +51,7 @@ lista_especies = [
         "nome": "Charmander", 
         "tipos": ["Fogo"], 
         "evolucao": [ {
-            "_id": 5, 
+            "id_evolucao": 5, 
             "nome": "Charmeleon", 
             "tipos": ["Fogo"], 
             "evolucao": [ {
@@ -94,7 +94,7 @@ lista_especies = [
             "nome": "Wartortle", 
             "tipos": ["Água"], 
             "evolucao": [ {
-                "_id": 9, 
+                "id_evolucao": 9, 
                 "nome": "Blastoise", 
                 "tipos": ["Água"], 
                 "evolucao": None, 
