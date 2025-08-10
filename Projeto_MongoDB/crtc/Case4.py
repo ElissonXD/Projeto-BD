@@ -1,6 +1,4 @@
 #um documento embutindo vários documentos
-#um documento com um array de referências para documentos
-#um documento referenciando apenas um documento
 import pymongo
 
 cliente = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -18,7 +16,7 @@ lista_especies = [
             "nome": "Ivysaur", 
             "tipos": ["Planta", "Veneno"], 
             "evolucao": [ {
-                "_id": 2, 
+                "id_evolucao": 2, 
                 "nome": "Venusaur", 
                 "tipos": ["Planta", "Veneno"], 
                 "evolucao": None, 
@@ -33,7 +31,7 @@ lista_especies = [
         "nome": "Ivysaur", 
         "tipos": ["Planta", "Veneno"], 
         "evolucao": [ {
-            "_id": 3, 
+            "id_evolucao": 3, 
             "nome": "Venusaur", 
             "tipos": ["Planta", "Veneno"], 
             "evolucao": None, 
@@ -57,7 +55,7 @@ lista_especies = [
             "nome": "Charmeleon", 
             "tipos": ["Fogo"], 
             "evolucao": [ {
-                "_id": 6, 
+                "id_evolucao": 6, 
                 "nome": "Charizard", 
                 "tipos": ["Fogo", "Voador"], 
                 "evolucao": None, 
@@ -72,7 +70,7 @@ lista_especies = [
         "nome": "Charmeleon", 
         "tipos": ["Fogo"], 
         "evolucao": [ {
-            "_id": 6, 
+            "id_evolucao": 6, 
             "nome": "Charizard", 
             "tipos": ["Fogo", "Voador"], 
             "evolucao": None, 
@@ -92,7 +90,7 @@ lista_especies = [
         "nome": "Squirtle", 
         "tipos": ["Água"], 
         "evolucao": [ {
-            "_id": 8, 
+            "id_evolucao": 8, 
             "nome": "Wartortle", 
             "tipos": ["Água"], 
             "evolucao": [ {
@@ -111,7 +109,7 @@ lista_especies = [
         "nome": "Wartortle", 
         "tipos": ["Água"], 
         "evolucao": [ {
-            "_id": 9, 
+            "id_evolucao": 9, 
             "nome": "Blastoise", 
             "tipos": ["Água"], 
             "evolucao": None, 
@@ -131,19 +129,19 @@ lista_especies = [
         "nome": "Eevee", 
         "tipos": ["Normal"], 
         "evolucao": [ {
-            "_id": 134, 
+            "id_evolucao": 134, 
             "nome": "Vaporeon", 
             "tipos": ["Água"], 
             "evolucao": None, 
             "pre_requisito": "Pedra de água"
         }, {
-            "_id": 135, 
+            "id_evolucao": 135, 
             "nome": "Jolteon", 
             "tipos": ["Elétrico"], 
             "evolucao": None, 
             "pre_requisito": "Pedra do trovão"
         }, {
-            "_id": 136, 
+            "id_evolucao": 136, 
             "nome": "Flareon", 
             "tipos": ["Fogo"], 
             "evolucao": None, 

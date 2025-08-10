@@ -19,7 +19,7 @@ lista_especies = [
         "nome": "Ivysaur", 
         "tipos": ["Planta", "Veneno"], 
         "pre_evolucao": {
-            "_id": 1, 
+            "id_pre_evolucao": 1, 
             "nome": "Bulbasaur", 
             "tipos": ["Planta", "Veneno"], 
             "pre_evolucao": None, 
@@ -32,7 +32,7 @@ lista_especies = [
         "nome": "Venusaur", 
         "tipos": ["Planta", "Veneno"], 
         "pre_evolucao": {
-            "_id": 2, 
+            "id_pre_evolucao": 2, 
             "nome": "Ivysaur", 
             "tipos": ["Planta", "Veneno"], 
             "pre_evolucao": {
@@ -58,7 +58,7 @@ lista_especies = [
         "nome": "Charmeleon", 
         "tipos": ["Fogo"], 
         "pre_evolucao": {
-            "_id": 4, 
+            "id_pre_evolucao": 4, 
             "nome": "Charmander", 
             "tipos": ["Fogo"], 
             "pre_evolucao": None, 
@@ -75,7 +75,7 @@ lista_especies = [
             "nome": "Charmeleon", 
             "tipos": ["Fogo"], 
             "pre_evolucao": {
-                "_id": 4, 
+                "id_pre_evolucao": 4, 
                 "nome": "Charmander", 
                 "tipos": ["Fogo"], 
                 "pre_evolucao": None, 
@@ -97,7 +97,7 @@ lista_especies = [
         "nome": "Wartortle", 
         "tipos": ["Água"], 
         "pre_evolucao": {
-            "_id": 7, 
+            "id_pre_evolucao": 7, 
             "nome": "Squirtle", 
             "tipos": ["Água"], 
             "pre_evolucao": None, 
@@ -114,7 +114,7 @@ lista_especies = [
             "nome": "Wartortle", 
             "tipos": ["Água"], 
             "pre_evolucao": {
-                "_id": 7, 
+                "id_pre_evolucao": 7, 
                 "nome": "Squirtle", 
                 "tipos": ["Água"], 
                 "pre_evolucao": None, 
@@ -136,7 +136,7 @@ lista_especies = [
         "nome": "Vaporeon", 
         "tipos": ["Água"], 
         "pre_evolucao": {
-            "_id": 133, 
+            "id_pre_evolucao": 133, 
             "nome": "Eevee", 
             "tipos": ["Normal"], 
             "pre_evolucao": None, 
@@ -149,7 +149,7 @@ lista_especies = [
         "nome": "Jolteon", 
         "tipos": ["Elétrico"], 
         "pre_evolucao": {
-            "_id": 133, 
+            "id_pre_evolucao": 133, 
             "nome": "Eevee", 
             "tipos": ["Normal"], 
             "pre_evolucao": None, 
@@ -162,7 +162,7 @@ lista_especies = [
         "nome": "Flareon", 
         "tipos": ["Fogo"], 
         "pre_evolucao": {
-            "_id": 133, 
+            "id_pre_evolucao": 133, 
             "nome": "Eevee", 
             "tipos": ["Normal"], 
             "pre_evolucao": None, 
@@ -179,10 +179,10 @@ pokemon = int(input("Escolha o número da pokedex de um pokémon para descobrir 
 
 if not especies.find_one({"_id": pokemon}):
     print("Esse pokémon não existe")
-elif not especies.find_one({"pre_evolucao._id": pokemon}):
+elif not especies.find_one({"pre_evolucao.id_pre_evolucao": pokemon}):
     print("Esse pokémon não tem evoluções")
 else:
-    evolucoes = especies.find({"pre_evolucao._id": pokemon}, projection= {"nome": True, "_id": False})
+    evolucoes = especies.find({"pre_evolucao.id_pre_evolucao": pokemon}, projection= {"nome": True, "_id": False})
 
     for p in evolucoes:
         print(p["nome"])

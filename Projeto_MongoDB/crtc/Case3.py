@@ -1,5 +1,4 @@
 #um documento com um array de referências para documentos
-#um documento referenciando apenas um documento
 import pymongo
 
 cliente = pymongo.MongoClient("mongodb://localhost:27017/")
