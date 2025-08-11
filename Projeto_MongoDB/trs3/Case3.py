@@ -38,9 +38,9 @@ cliente.drop_database("banco_de_dados")
 pokemon_moves.insert_many(lista_pokemon_move)
 pokemons.insert_many(lista_pokemons)
 
-nome_pokemon = input("Digite o nome do Pokémon: ").strip()
+id_pokemon = int(input("Digite o id do Pokémon: "))
 
-movs = pokemons.find_one({"nome": nome_pokemon})
+movs = pokemons.find_one({"_id": id_pokemon})
 if movs:
     for moves in movs['movimentos_refs']:
         pokmov = pokemon_moves.find_one({"_id": moves})

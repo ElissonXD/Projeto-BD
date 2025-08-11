@@ -25,9 +25,9 @@ lista_movimentos = [
 cliente.drop_database("banco_de_dados")
 movimentos.insert_many(lista_movimentos)
 
-nome_pokemon = input("Digite o nome do Pokémon: ").strip()
+id_pokemon = int(input("Digite o id do Pokémon: "))
 
-cursor = movimentos.find({"pokemon.nome": nome_pokemon}, projection={"_id": 0, "nome": 1})
+cursor = movimentos.find({"pokemon._id": id_pokemon}, projection={"_id": 0, "nome": 1})
 nomes = [m["nome"] for m in cursor]
 if nomes:
     print(*nomes, sep="\n")

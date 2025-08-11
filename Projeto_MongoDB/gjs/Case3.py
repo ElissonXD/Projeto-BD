@@ -53,10 +53,7 @@ lista_treinadores =[
         "pokemon_refs": [
             {"num_especie": 25, "id_natureza": 1},
             {"num_especie": 6, "id_natureza": 1},
-            {"num_especie": 9, "id_natureza": 1},
-            {"num_especie": 3, "id_natureza": 1},
-            {"num_especie": 18, "id_natureza": 1},
-            {"num_especie": 131, "id_natureza": 1}
+            {"num_especie": 9, "id_natureza": 1}
         ]
     },
     {

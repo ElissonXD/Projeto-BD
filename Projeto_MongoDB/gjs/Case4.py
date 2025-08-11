@@ -17,9 +17,7 @@ lista_treinadores =[
             {"id_pokemon": {"num_especie": 25, "id_natureza": 1}, "rota": "Viridian Forest", "regiao": "Kanto"},
             {"id_pokemon": {"num_especie": 6, "id_natureza": 1}, "rota": None, "regiao": "Kanto"},
             {"id_pokemon": {"num_especie": 9, "id_natureza": 1}, "rota": None, "regiao": "Kanto"},
-            {"id_pokemon": {"num_especie": 3, "id_natureza": 1}, "rota": None, "regiao": "Kanto"},
-            {"id_pokemon": {"num_especie": 18, "id_natureza": 1}, "rota": None, "regiao": "Kanto"},
-            {"id_pokemon": {"num_especie": 131, "id_natureza": 1}, "rota": "Silph Co.", "regiao": "Kanto"}
+            {"id_pokemon": {"num_especie": 3, "id_natureza": 1}, "rota": None, "regiao": "Kanto"}
         ]
     },
     {

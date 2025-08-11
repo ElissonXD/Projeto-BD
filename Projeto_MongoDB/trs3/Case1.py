@@ -38,15 +38,11 @@ cliente.drop_database("banco_de_dados")
 pokemons.insert_many(lista_pokemons)
 movimentos.insert_many(lista_movimentos)
 
-nome_pokemon = input("Digite o nome do Pokémon: ").strip()
+id_pokemon = int(input("Digite o id do Pokémon: "))
 
-poke = pokemons.find_one({"nome": nome_pokemon}, projection={"_id": 1})
-if not poke:
-    print("Pokémon não encontrado.")
+cursor = movimentos.find({"pokemon_id": id_pokemon}, projection={"_id": 0, "nome": 1})
+nomes = [m["nome"] for m in cursor]
+if nomes:
+    print(*nomes, sep="\n")
 else:
-    cursor = movimentos.find({"pokemon_id": poke["_id"]}, projection={"_id": 0, "nome": 1})
-    nomes = [m["nome"] for m in cursor]
-    if nomes:
-        print(*nomes, sep="\n")
-    else:
-        print("Esse Pokémon não possui movimentos cadastrados.")
+    print("Esse Pokémon não possui movimentos cadastrados.")

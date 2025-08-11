@@ -41,10 +41,10 @@ lista_pokemons = [
 cliente.drop_database("banco_de_dados")
 pokemons.insert_many(lista_pokemons)
 
-nome_pokemon = input("Digite o nome do Pokémon: ").strip()
+id_pokemon = int(input("Digite o id do Pokémon: "))
 
 poke = pokemons.find_one(
-    {"nome": nome_pokemon},
+    {"_id": id_pokemon},
     projection={"_id": 0, "pokemon_moves.movimento.nome": 1}
 )
 if not poke:
